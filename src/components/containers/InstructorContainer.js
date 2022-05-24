@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { 
   fetchInstructorThunk,
+  deleteInstructorThunk,
   fetchAllCoursesThunk,
   editCourseThunk 
 } from "../../store/thunks";
@@ -19,6 +20,7 @@ class InstructorContainer extends Component {
     return (
       <InstructorView 
         instructor={this.props.instructor}
+        deleteInstructor={this.props.deleteInstructor}
         editCourse={this.props.editCourse}
         allCourses={this.props.allCourses}
       />
@@ -39,6 +41,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     fetchInstructor: (id) => dispatch(fetchInstructorThunk(id)),
+    deleteInstructor: (id) => dispatch(deleteInstructorThunk(id)),
     editCourse: (course) => dispatch(editCourseThunk(course)),
     fetchCourses: () => dispatch(fetchAllCoursesThunk()),
 

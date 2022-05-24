@@ -20,6 +20,13 @@ export const addInstructor = (instructor) => {
   };
 };
 
+export const deleteInstructor = (instructorId) => {
+  return {
+    type: at.DELETE_INSTRUCTOR,
+    payload: instructorId,
+  };
+};
+
 //Single instructor
 export const fetchInstructor = (instructor) => {
   return {

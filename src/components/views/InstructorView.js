@@ -2,10 +2,11 @@ import { Link } from "react-router-dom";
 
 
 const InstructorView = (props) => {
-  const {instructor, editCourse, allCourses} = props;
+
+  const {instructor, deleteInstructor, editCourse, allCourses} = props;
   let assignedCourses = allCourses.filter(course => course.instructorId===instructor.id);
   let availableCourses = allCourses.filter(course => course.instructorId!==instructor.id);
-  
+  console.log("this failed");
   return (
     <div>      
       <h1>{instructor.firstname}</h1>
@@ -35,7 +36,7 @@ const InstructorView = (props) => {
         })}</div>
 
       </div>
-
+      <button onClick={() => deleteInstructor(instructor.id)}>Delete</button>
   
     </div>
   );

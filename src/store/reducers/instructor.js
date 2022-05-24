@@ -1,4 +1,4 @@
-import { FETCH_INSTRUCTOR } from "../actions/actionTypes";
+import { FETCH_INSTRUCTOR, DELETE_INSTRUCTOR } from "../actions/actionTypes";
 
 const initialState = {
   courses: [],
@@ -7,6 +7,8 @@ const initialState = {
 const instructor = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_INSTRUCTOR:
+      return action.payload;
+    case DELETE_INSTRUCTOR:
       return action.payload;
     default:
       return state;
