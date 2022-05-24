@@ -13,6 +13,9 @@ const CourseView = (props) => {
       }
       <h4>Timeslot: {course.timeslot}</h4>
       <h4>Location: {course.location}</h4>
+      <Link to={`/course/${course.id}/edit`} state={{course: course}}>
+        <button>Edit Course Information</button>
+      </Link>
     </div>
   );
 
