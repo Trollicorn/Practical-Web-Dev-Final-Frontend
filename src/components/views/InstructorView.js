@@ -6,7 +6,19 @@ const InstructorView = (props) => {
   const {instructor, deleteInstructor, editCourse, allCourses} = props;
   let assignedCourses = allCourses.filter(course => course.instructorId===instructor.id);
   let availableCourses = allCourses.filter(course => course.instructorId!==instructor.id);
-  console.log("this failed");
+  console.log(instructor);
+  console.log("instructor logged");
+  if (! instructor){ //failed to fetch instructor
+    return(
+      <div>
+        <h2>Instructor not found</h2>
+        <Link to={"/instructors"}>
+          <h4>Return to all instructors</h4>
+        </Link>
+      </div>
+    )
+
+  }
   return (
     <div>      
       <h1>{instructor.firstname}</h1>
