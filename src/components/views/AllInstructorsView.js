@@ -15,7 +15,8 @@ const AllInstructorsView = (props) => {
   return (
     <div>
       {props.allInstructors.map((instructor) => {
-        let name = instructor.firstname + " " + instructor.lastname;
+        let name = instructor.firstname ? (instructor.firstname + " " + instructor.lastname)
+          : "Instructor " + (instructor.lastname ? instructor.lastname : instructor.id);
         return (
           <div key={instructor.id}>
           <Link to={`/instructor/${instructor.id}`}>

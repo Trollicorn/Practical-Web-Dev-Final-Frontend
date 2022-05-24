@@ -19,9 +19,11 @@ const InstructorView = (props) => {
     )
 
   }
+  let name = instructor.firstname ? (instructor.firstname + " " + instructor.lastname)
+          : "Instructor " + (instructor.lastname ? instructor.lastname : instructor.id);
   return (
     <div>      
-      <h1>{instructor.firstname}</h1>
+      <h1>{name}</h1>
       <h3>{instructor.department}</h3>
       <div style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
         <div>Assigned courses:
@@ -29,7 +31,7 @@ const InstructorView = (props) => {
           return (
             <div key={course.id}>
             <Link to={`/course/${course.id}`}>
-              <h4>{course.title}</h4>
+              <h4>{course.title ? course.title : "Course " + course.id}</h4>
             </Link>
             <button onClick={() => editCourse({id:course.id, instructorId: null})}>x</button>
             </div>
@@ -40,7 +42,7 @@ const InstructorView = (props) => {
           return (
             <div key={course.id}>
             <Link to={`/course/${course.id}`}>
-              <h4>{course.title}</h4>
+              <h4>{course.title ? course.title : "Course " + course.id}</h4>
             </Link>
             <button onClick={() => editCourse({id:course.id, instructorId: instructor.id})}>+</button>
             </div>

@@ -4,7 +4,7 @@ const CourseView = (props) => {
   const { course } = props;
   return (
     <div>
-      <h1>{course.title}</h1>
+      <h1>{course.title ? course.title : "Course " + course.id}</h1>
       {course.instructor ? 
         <Link to={`/instructor/${course.instructorId}`}>
           <h3>{course.instructor.firstname + " " + course.instructor.lastname}</h3>
