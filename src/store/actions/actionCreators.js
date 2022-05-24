@@ -13,6 +13,13 @@ export const fetchAllInstructors = (instructors) => {
   };
 };
 
+export const addInstructor = (instructor) => {
+  return {
+    type: at.ADD_INSTRUCTOR,
+    payload: instructor,
+  };
+};
+
 //Single instructor
 export const fetchInstructor = (instructor) => {
   return {

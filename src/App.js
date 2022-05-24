@@ -9,7 +9,7 @@ import {
   CourseContainer,
   AllInstructorsContainer,
   AllCoursesContainer,
-//  NewInstructorContainer,
+  NewInstructorContainer,
   NewCourseContainer
 } from './components/containers';
 
@@ -23,7 +23,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={HomePageContainer} />
         <Route exact path="/instructors" component={AllInstructorsContainer} />
-      {/*  <Route exact path="/newinstructor" component={NewInstructorContainer} /> */}
+        <Route exact path="/newinstructor" component={NewInstructorContainer} />
         <Route exact path="/instructor/:id" component={InstructorContainer} />
         <Route exact path="/courses" component={AllCoursesContainer} />
         <Route exact path="/newcourse" component={NewCourseContainer} />
