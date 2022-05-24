@@ -32,9 +32,8 @@ class NewInstructorContainer extends Component {
         let instructor = {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
-            department: this.state.deparment,
+            department: this.state.department,
             imageUrl: this.state.imageUrl,
-            courses: this.state.courses,
             instructorId: this.state.instructorId
         };
         
@@ -45,7 +44,6 @@ class NewInstructorContainer extends Component {
           lastname: this.state.lastname,
           department: this.state.deparment,
           imageUrl: this.state.imageUrl,
-          courses: this.state.courses,
           instructorId: null, 
           redirect: true, 
           redirectId: newInstructor.id
