@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const InstructorView = (props) => {
 
-  const {instructor, deleteInstructor, editCourse, allCourses} = props;
+  const {instructor, editCourse, allCourses} = props;
   let assignedCourses = allCourses.filter(course => course.instructorId===instructor.id);
   let availableCourses = allCourses.filter(course => course.instructorId!==instructor.id);
   console.log(instructor);
@@ -50,7 +50,6 @@ const InstructorView = (props) => {
         })}</div>
 
       </div>
-      <button onClick={() => deleteInstructor(instructor.id)}>Delete</button>
   
     </div>
   );

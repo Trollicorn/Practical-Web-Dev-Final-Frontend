@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const AllInstructorsView = (props) => {
+  const {deleteInstructor} = props;
   if (!props.allInstructors.length) {
     return (
     <div>
@@ -21,7 +22,7 @@ const AllInstructorsView = (props) => {
           <div key={instructor.id}>
           <Link to={`/instructor/${instructor.id}`}>
             <h1>{name}</h1>
-          </Link>
+          </Link><button onClick={() => deleteInstructor(instructor.id)}>X</button> 
           <p>{instructor.department}</p>
         </div>
         );

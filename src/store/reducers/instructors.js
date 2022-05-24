@@ -7,6 +7,8 @@ const allInstructors = (state = [], action) => {
       return action.payload;
     case at.ADD_COURSE:
       return [...state, action.payload];
+    case at.DELETE_INSTRUCTOR:
+      return state.filter(instructor => instructor.id!==action.payload);
     default:
       return state;
   }
