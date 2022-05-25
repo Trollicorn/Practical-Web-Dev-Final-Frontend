@@ -30,7 +30,8 @@ const InstructorView = (props) => {
       </Link>
       <div style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
         <div>Assigned courses:
-        {assignedCourses.map( course => {
+        {assignedCourses.length ? 
+         assignedCourses.map( course => {
           return (
             <div key={course.id}>
             <Link to={`/course/${course.id}`}>
@@ -39,9 +40,11 @@ const InstructorView = (props) => {
             <button onClick={() => editCourse({id:course.id, instructorId: null})}>x</button>
             </div>
           );
-        })}</div>
+        })
+        : (<h4>No courses assigned</h4>)
+      }</div>
         <div>Available courses:
-        {availableCourses.map( course => {
+        {availableCourses.length ? availableCourses.map( course => {
           return (
             <div key={course.id}>
             <Link to={`/course/${course.id}`}>
@@ -50,7 +53,7 @@ const InstructorView = (props) => {
             <button onClick={() => editCourse({id:course.id, instructorId: instructor.id})}>+</button>
             </div>
           );
-        })}</div>
+        }) : <h4>No courses available</h4>}</div>
 
       </div>
   
