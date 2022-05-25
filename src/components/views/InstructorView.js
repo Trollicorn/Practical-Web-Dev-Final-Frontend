@@ -56,7 +56,7 @@ const InstructorView = (props) => {
         }) : <h4>No courses available</h4>}</div>
 
       </div>
-  
+      {instructor.imageUrl ? <img src={instructor.imageUrl} width="200px"/> : <p/> }
     </div>
   );
 
