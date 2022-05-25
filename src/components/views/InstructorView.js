@@ -25,6 +25,9 @@ const InstructorView = (props) => {
     <div>      
       <h1>{name}</h1>
       <h3>{instructor.department}</h3>
+      <Link to={`/instructor/${instructor.id}/edit`} state={{instructor: instructor}}>
+        <button>Edit Instructor Information</button>
+      </Link>
       <div style={{display: "flex", flexDirection: "row", justifyContent: "space-evenly"}}>
         <div>Assigned courses:
         {assignedCourses.map( course => {

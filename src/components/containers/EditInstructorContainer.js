@@ -2,25 +2,39 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import NewInstructorView from '../views/NewInstructorView';
-import { addInstructorThunk } from '../../store/thunks';
+import EditInstructorView from '../views/EditInstructorView';
+import { editInstructorThunk, fetchInstructorThunk } from '../../store/thunks';
  //IMPLEMENT THUNK
 
-class NewInstructorContainer extends Component {
+class EditInstructorContainer extends Component {
     constructor(props){
         super(props);
         this.state = {
           firstname: "", 
           lastname: "",
           department: "", 
-          imageUrl: null, 
-          courses: [],
+          imageUrl: "", 
+          instructorId: "",
           redirect: false, 
           redirectId: null
         };
     }
 
-    handleChange = event => {
+    componentDidMount() {
+      //getting course ID from url
+      this.props.fetchInstructor(this.props.match.params.id);
+      let instructor = this.props.instructor;
+      this.setState({
+        firstname: instructor.firstname,
+        lastname: instructor.lastname,
+        department: instructor.deparment,
+        imageUrl: instructor.imageUrl,
+        instructorId: instructor.id,
+      })
+      console.log(this.props.instructor);
+    }
+
+    handleChange = event => { 
       this.setState({
         [event.target.name]: event.target.value
       });
@@ -34,19 +48,19 @@ class NewInstructorContainer extends Component {
             lastname: this.state.lastname,
             department: this.state.department,
             imageUrl: this.state.imageUrl,
-            instructorId: this.state.instructorId
+            id: this.state.instructorId
         };
         
-        let newInstructor = await this.props.addInstructor(instructor);
+        let editInstructor = await this.props.editInstructor(instructor);
 
         this.setState({
           firstname: this.state.firstname,
           lastname: this.state.lastname,
           department: this.state.deparment,
           imageUrl: this.state.imageUrl,
-          instructorId: null, 
+          instructorId: this.state.instructorId, 
           redirect: true, 
-          redirectId: newInstructor.id
+          redirectId: this.state.instructorId
         });
     }
 
@@ -60,18 +74,29 @@ class NewInstructorContainer extends Component {
           return (<Redirect to={`/instructor/${this.state.redirectId}`}/>)
         }
         return (
-          <NewInstructorView 
+          <EditInstructorView 
             handleChange = {this.handleChange} 
-            handleSubmit={this.handleSubmit}      
+            handleSubmit={this.handleSubmit}  
+            instructor={this.props.instructor}    
           />
         );
     }
 }
 
+
+const mapState = (state) => {
+  return {
+    instructor: state.instructor,
+  };
+};
+
+
+
 const mapDispatch = (dispatch) => {
     return({
-        addInstructor: (instructor) => dispatch(addInstructorThunk(instructor)),
+        editInstructor: (instructor) => dispatch(editInstructorThunk(instructor)),
+        fetchInstructor: (id) => dispatch(fetchInstructorThunk(id))
     })
 }
 
-export default connect(null, mapDispatch)(NewInstructorContainer);
+export default connect(mapState, mapDispatch)(EditInstructorContainer);
