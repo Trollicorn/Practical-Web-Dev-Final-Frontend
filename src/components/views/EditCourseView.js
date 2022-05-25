@@ -1,5 +1,5 @@
 const EditCourseView = (props) => {
-  const {handleChange, handleSubmit } = props;
+  const {handleChange, handleSubmit, course } = props;
 
   return (
     <div className="root">
@@ -11,17 +11,17 @@ const EditCourseView = (props) => {
         </div>
         <form style={{textAlign: 'center'}} onSubmit={(e) => handleSubmit(e)}>
           <label style= {{color:'#11153e', fontWeight: 'bold'}}>Title: </label>
-          <input type="text" name="title" onChange ={(e) => handleChange(e)} />
+          <input type="text" name="title" defaultValue={course.title} onChange ={(e) => handleChange(e)} />
           <br/>
           <br/>
 
           <label style={{color:'#11153e', fontWeight: 'bold'}}>Timeslot: </label>
-          <input type="text" name="timeslot" onChange={(e) => handleChange(e)} />
+          <input type="text" name="timeslot" defaultValue={course.timeslot} onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
 
           <label style={{color:'#11153e', fontWeight: 'bold'}}>Location: </label>
-          <input type="text" name="location" onChange={(e) => handleChange(e)} />
+          <input type="text" name="location" defaultValue={course.location} onChange={(e) => handleChange(e)} />
           <br/>
           <br/>
 

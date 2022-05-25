@@ -7,6 +7,7 @@ class CourseContainer extends Component {
   componentDidMount() {
     //getting course ID from url
     this.props.fetchCourse(this.props.match.params.id);
+    console.log(this.props);
   }
 
   render() {
