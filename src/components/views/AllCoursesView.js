@@ -23,11 +23,12 @@ const AllCoursesView = (props) => {
           <Link to={`/course/${course.id}`}>
             <h1>{title ? title : "Course " + course.id}</h1>
           </Link>
-          <button onClick={() => deleteCourse(course.id)}>Delete</button>
+          <button onClick={() => deleteCourse(course.id)}>X</button>
           </div>
         );
       }
       )}
+      <br/>
       <Link to={`/newcourse`}>
         <button>Add New Course</button>
       </Link>
